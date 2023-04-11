@@ -1,0 +1,94 @@
+body {
+    display: flex;
+    justify-content:center;
+    align-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+    overflow: auto;
+    background-size: cover;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif
+}
+
+
+#gameBoard {
+	display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-content: center;
+	top: 30px;
+	outline:3px solid #000000;
+	font-size: 0;
+	max-height:960px;
+	max-width:960px;
+    min-height:960px;
+	min-width:960px;
+	padding: 0;
+    margin: 0;
+    background-color: rgb(88, 177, 147);
+}
+
+#container {
+    transform-origin: top left;
+	display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    align-content: center;
+	top: 30px;
+	font-size: 0;
+	padding: 0;
+    margin: 0;
+}
+
+
+.box { 
+    flex: 0;
+    margin: 0;
+    padding: 0;
+    border: none; 
+    background-color: white; 
+    min-height: 60px;
+    min-width: 60px;
+    outline:2px solid grey;
+    border: 0px;
+}
+
+.slidecontainer{
+    width: 100%;
+}
+
+.slider{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 25px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;  
+    transition: opacity .2s;  
+    margin-top: 30px;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    background: #04AA6D;
+    cursor: pointer;
+}
