@@ -5,14 +5,11 @@
 
 function widthAndHeight(gameboard, container){
     var b = gameboard.clientWidth;
-    console.log(b);
     var B = container.clientWidth;
-    console.log(B);
     var w = b/B;
 
     var g = gameboard.clientHeight;
     var G = container.clientHeight;
-
     var h = g/G;
 
     document.getElementById('container').style.transform = 'scale(' + w + ', '+ h +')';
@@ -24,6 +21,20 @@ function widthAndHeight(gameboard, container){
 addEventListener('load', (event) => {
     const container = document.querySelector('#container');
     const gameboard = document.querySelector('#gameBoard');
+
+    function clearDivs(){
+        const nodelist = document.querySelectorAll("div.box");
+        nodelist.forEach(element => {
+            element.remove();
+        });
+    }
+
+    function clearPaint(){
+        const nodelist = document.querySelectorAll('div.box');
+        nodelist.forEach(element => {
+            element.style = "background-color: white;";
+        });
+    }
 
     function createDivs(num){
         container.style.width = (60 * num) + 'px';
@@ -39,19 +50,32 @@ addEventListener('load', (event) => {
                 return false;
               }
         });
+        widthAndHeight(gameboard, container);
     };
 
+    var slider = document.getElementById('myRange');
+    slider.addEventListener("input", (e) => {
+        clearDivs();
+        createDivs(e.target.value);
+    });
 
-    createDivs(30);
-    widthAndHeight(gameboard, container);
 
+    createDivs(16);
+    
+    var clearButton = document.getElementById('clear');
+    clearButton.addEventListener('click', clearPaint);
+
+    var rainbowButton = document.getElementById('rainbow');
 
 
     document.getElementById('container').addEventListener("mousemove", (event) => {
-        console.log(event.buttons);
+        var randomColor = "000000";
+        if (rainbowButton.checked){
+            randomColor = Math.floor(Math.random()*16777215).toString(16);
+        }
         if (event.buttons == 1){
             underdiv = document.elementFromPoint(event.clientX, event.clientY);
-            underdiv.style = "background-color: black;";
+            underdiv.style = "background-color:" + "#" + randomColor;;
     }
     });
 });
